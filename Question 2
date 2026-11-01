@@ -1,0 +1,71 @@
+class BankAccount {
+    private long accountNumber;
+    private String accountHolder;
+    private double balance;
+
+    public long getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(long accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public String getAccountHolder() {
+        return accountHolder;
+    }
+
+    public void setAccountHolder(String accountHolder) {
+        this.accountHolder = accountHolder;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("Deposit successful.");
+        } else {
+            System.out.println("Invalid deposit amount.");
+        }
+    }
+
+    public void withdraw(double amount) {
+        if (amount <= 0) {
+            System.out.println("Invalid withdrawal amount.");
+        } else if (amount > balance) {
+            System.out.println("Insufficient balance.");
+        } else {
+            balance -= amount;
+            System.out.println("Withdrawal successful.");
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        BankAccount b = new BankAccount();
+
+        b.setAccountNumber(123456789);
+        b.setAccountHolder("Vaidika");
+        b.setBalance(5000);
+
+        System.out.println("Account Holder: " + b.getAccountHolder());
+        System.out.println("Initial Balance: " + b.getBalance());
+
+        b.deposit(2000);
+        System.out.println("Balance: " + b.getBalance());
+
+        b.withdraw(1000);
+        System.out.println("Balance: " + b.getBalance());
+
+        b.deposit(-500);
+        b.withdraw(10000);
+    }
+}
